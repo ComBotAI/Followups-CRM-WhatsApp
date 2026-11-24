@@ -1,0 +1,91 @@
+# Netlify: the Followups CRM web app (domain from EXPO_PUBLIC_WEB_DOMAIN)
+#
+# Environment: .env is not in git, so set the EXPO_PUBLIC_* values from .env in
+# Netlify → Site configuration → Environment variables (they are baked into the build).
+
+[build]
+  command = "npm run build:web"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Expo's CLI asks no questions in CI.
+  CI = "1"
+
+# ---------------------------------------------------------------------------
+# Pages with a value in the address. Real files and clean URLs (/login → login.html)
+# are served first; these only catch addresses with no file of their own.
+# ---------------------------------------------------------------------------
+
+# Emailed links with the token in the path. The token is base64 and may contain "/",
+# so everything after the prefix belongs to it. Served from a plain-named copy of the
+# catch-all page (build:web makes it): Netlify won't serve "[...token].html", a name
+# with ".." in it.
+[[redirects]]
+  from = "/verify/*"
+  to = "/verify/_token.html"
+  status = 200
+
+[[redirects]]
+  from = "/reset-password/*"
+  to = "/reset-password/_token.html"
+  status = 200
+
+[[redirects]]
+  from = "/lead/:id"
+  to = "/lead/[id].html"
+  status = 200
+
+[[redirects]]
+  from = "/chat/:id"
+  to = "/chat/[id].html"
+  status = 200
+
+[[redirects]]
+  from = "/board/:slug"
+  to = "/board/[slug].html"
+  status = 200
+
+[[redirects]]
+  from = "/campaigns/:id"
+  to = "/campaigns/[id].html"
+  status = 200
+
+[[redirects]]
+  from = "/channels/:id"
+  to = "/channels/[id].html"
+  status = 200
+
+# ---------------------------------------------------------------------------
+# Headers
+# ---------------------------------------------------------------------------
+
+# App Links (Android) and Universal Links (iOS): verify / reset links open
+# the installed app. Both files must be served as JSON.
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"
+
+[[headers]]
+  for = "/.well-known/assetlinks.json"
+  [headers.values]
+    Content-Type = "application/json"
+
+# Hashed scripts and assets never change.
+[[headers]]
+  for = "/_expo/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Basic hardening for every page.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

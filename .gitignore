@@ -1,0 +1,75 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+example
+
+# generated native folders
+/ios
+/android
+
+# local env (public values, but keep per-developer)
+.env
+
+# Web hosting: the exported site is built into dist/ (ignored above)
+# and deployed from there. Local state of hosting CLIs stays out of git.
+.vercel/
+.netlify/
+.wrangler/
+.firebase/
+firebase-debug.log
+/web-dist*.zip
+/dist*.zip
+# App Links / Universal Links files must always ship with the site.
+!public/.well-known/
+!public/.well-known/**
+
+# App builds downloaded from EAS, and local signing credentials
+*.apk
+*.aab
+*.ipa
+credentials.json
+
+# Marketing Console content (kept out of git)
+marketing/
+
+# ElevenLabs key for marketing reels
+marketing/_build/.env
+
+
+# Store listing assets (screenshots, copy)
+store-listing/

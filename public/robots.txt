@@ -1,0 +1,19 @@
+# Public pages can be indexed; everything behind sign-in is private.
+User-agent: *
+Allow: /$
+Allow: /access$
+Allow: /login$
+Allow: /forgot$
+# Scripts, styles, fonts and images the public pages need to render (the site is a JS app:
+# without these, search engines see an empty page).
+Allow: /_expo/
+Allow: /assets/
+Allow: /favicon
+Allow: /icon-
+Allow: /apple-touch-icon.png
+Allow: /og-image.png
+Allow: /manifest.webmanifest
+Allow: /.well-known/
+Disallow: /
+
+Sitemap: https://followups.example.com/sitemap.xml

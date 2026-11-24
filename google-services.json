@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573477174624",
+    "project_id": "followups-generic",
+    "storage_bucket": "followups-generic.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573477174624:android:70a45676af7ab2c7107205",
+        "android_client_info": {
+          "package_name": "crm.followups.wa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnCP1fSxdkly-LmdO4dtWmtypmqrs4tIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

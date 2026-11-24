@@ -1,0 +1,35 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "APPLE_TEAM_ID.crm.followups.wa"
+        ],
+        "components": [
+          {
+            "/": "/verify*",
+            "comment": "Email verification"
+          },
+          {
+            "/": "/reset-password*",
+            "comment": "Password reset"
+          }
+        ]
+      },
+      {
+        "appID": "APPLE_TEAM_ID.crm.followups.wa",
+        "paths": [
+          "/verify",
+          "/verify/*",
+          "/reset-password",
+          "/reset-password/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "APPLE_TEAM_ID.crm.followups.wa"
+    ]
+  }
+}
