@@ -18,11 +18,30 @@
 
 Most small businesses lose sales because they forget to follow up. In Followups CRM every lead has a next follow-up date, the **Today queue** shows the team who to message, **automatic WhatsApp follow-up series** do the sending, and **visit tracking** brings customers back. It works with the **WhatsApp Business API** or the **normal WhatsApp app**.
 
+## Backend and the Com Bot Partner Program
+
+> **This repository is the frontend only.** It contains the source of the mobile and web app. It needs a backend to work, and the backend is provided by **Com Bot AI Limited** through the **Com Bot Partner Program**.
+
+The app talks to two hosted services through two npm packages:
+
+| Package | Service | Used for |
+| --- | --- | --- |
+| [`@ab-ecosystem/sso`](https://www.npmjs.com/package/@ab-ecosystem/sso) | **SSO** (Auth-as-a-Service) | Sign-in, two-factor, teams, members and roles |
+| [`@ab-ecosystem/cpaas`](https://www.npmjs.com/package/@ab-ecosystem/cpaas) | **CPaaS** gateway | Contacts, WhatsApp Business API, templates, campaigns, wallet and the cloud data store |
+
+The packages are free and MIT licensed, but they only connect to the Com Bot backend. To run your own branded copy of Followups CRM:
+
+1. **Sign up with Com Bot as a partner** on the Com Bot Partner Program: [udghatan.com/developer-sdk/products/cpaas-platform](https://udghatan.com/developer-sdk/products/cpaas-platform/).
+2. Once approved, you get access to the **SSO panel** and the **CPaaS gateway**, where you create your project, add users, connect WhatsApp numbers and set data store plans.
+3. Put the SSO URL, CPaaS gateway URL and Access ID you receive into `.env` (see [Initial setup](#initial-setup)).
+
+As a partner you sell the app under **your own brand**: you own the customer relationship and set your own prices, and Com Bot runs the backend.
+
 ## Initial setup
 
-The app runs on a hosted backend: an **SSO** service for sign-in and teams, and a **CPaaS** gateway for contacts, WhatsApp and the cloud data store.
+The app runs on a hosted backend: an **SSO** service for sign-in and teams, and a **CPaaS** gateway for contacts, WhatsApp and the cloud data store. You get both by joining the [Com Bot Partner Program](#backend-and-the-com-bot-partner-program).
 
-1. **Get your backend details.** Create a project in your SSO panel and note the **SSO URL**, the **CPaaS gateway URL** and the project's **SDK project id** (the Access ID).
+1. **Get your backend details.** After you are approved as a Com Bot partner, create a project in your SSO panel and note the **SSO URL**, the **CPaaS gateway URL** and the project's **SDK project id** (the Access ID).
 2. **Install:**
 
    ```bash
@@ -97,6 +116,9 @@ Builds run in the cloud with EAS, so you don't need Android Studio or Xcode. Set
 Google Play and the App Store require an account-deletion page: set it in `EXPO_PUBLIC_DELETE_ACCOUNT_URL`. The page must name your app or company.
 
 ## FAQ
+
+**Can I run it with my own backend?**
+Not out of the box. This is frontend source code built on the `@ab-ecosystem/sso` and `@ab-ecosystem/cpaas` packages, which connect to the Com Bot backend. To get backend access, [join the Com Bot Partner Program](#backend-and-the-com-bot-partner-program). You can still try the app's screens without any backend (see the next question).
 
 **Is this a WhatsApp Business API app?**
 It supports both. With an API number connected you get templates, campaigns and fully automatic follow-ups, and replies are handled in the WhatsApp Business app. Without the API, the app prepares each message and the user taps send.
